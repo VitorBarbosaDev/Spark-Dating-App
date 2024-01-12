@@ -1,0 +1,62 @@
+/* Colors */
+:root {
+    --primary-color: #ff4d6d; /* Romantic pink */
+    --secondary-color: #ff6699; /* Lighter pink */
+    --text-color: #333;
+    --background-color: #ff5e5e;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Profile Cards */
+.card {
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- User Profiles Page Content Starts Here -->
+<div class="container-fluid">
+    <h1 class="mx-auto text-center">Do You Feel a Spark?</h1>
+
+    <!-- Detailed List of User Profiles -->
+    <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-12 mt-3 profile-container text-center">
+            {% for user in object_list %}
+            <div>
+                <h2>{{ user.username }}</h2>
+                <p>Age: {{ user.age }}</p>
+                <p>Gender: {{ user.gender }}</p>
+                <p>Interests: {% for interest in user.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                <p>Bio: {{ user.bio }}</p>
+            </div>
+            {% empty %}
+            <p>No user profiles found.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr/>
+
+    <!-- User Profiles Displayed as Cards -->
+    <div class="row">
+        {% for user_profile in user_profile_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="image-container">
+                        <img src="{{ user_profile.image.url }}" alt="{{ user_profile.username }}" class="profile-image">
+                    </div>
+                    <a href="#" class="profile-link">
+                        <h2 class="card-title">{{ user_profile.username }}</h2>
+                    </a>
+
+                    <hr />
+                    <p class="card-text text-muted h6">{{ user_profile.age }} years old</p>
+                    <p class="card-text">{{ user_profile.bio|truncatewords:20 }}</p>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> &laquo; PREV</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+<!-- User Profiles Page Content Ends Here -->
+{% endblock %}

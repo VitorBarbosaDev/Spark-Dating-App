@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import UserProfile, Interest, UserProfileImage, Match, Swipe, Message, Report, Feedback
 from .forms import CustomUserCreationForm, CustomUserChangeForm
+from django_summernote.admin import SummernoteModelAdmin
 
 # Inline model for UserProfileImage
 class UserProfileImageInline(admin.StackedInline):
@@ -13,16 +14,18 @@ class InterestInline(admin.TabularInline):
     extra = 1
 
 # Customizing UserProfile Admin
-class UserProfileAdmin(admin.ModelAdmin):
+@admin.register(UserProfile)
+class UserProfileAdmin(SummernoteModelAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
-    model = UserProfile
     list_display = ('username', 'email', 'age', 'gender', 'account_status')
     list_filter = ('gender', 'account_status')
     search_fields = ('username', 'email')
     inlines = [UserProfileImageInline, InterestInline]
 
-    # Overriding get_form to use different forms for add and change actions
+
+    summernote_fields = ('bio',)
+
     def get_form(self, request, obj=None, **kwargs):
         if obj:
             kwargs['form'] = self.form
@@ -51,33 +54,40 @@ class MatchAdmin(admin.ModelAdmin):
     search_fields = ('user1__username', 'user2__username')
 
 # Customizing Swipe Admin
+@admin.register(Swipe)
 class SwipeAdmin(admin.ModelAdmin):
     list_display = ('swiper', 'swiped_on', 'liked', 'timestamp')
     list_filter = ('liked',)
     search_fields = ('swiper__username', 'swiped_on__username')
 
-# Customizing Message Admin
-class MessageAdmin(admin.ModelAdmin):
+@admin.register(Message)
+class MessageAdmin(SummernoteModelAdmin):
     list_display = ('sender', 'receiver', 'timestamp', 'read')
     list_filter = ('read',)
     search_fields = ('sender__username', 'receiver__username')
+    summernote_fields = ('content',)
 
-# Customizing Report Admin
-class ReportAdmin(admin.ModelAdmin):
+
+@admin.register(Report)
+class ReportAdmin(SummernoteModelAdmin):
     list_display = ('reported_user', 'reporting_user', 'timestamp')
     search_fields = ('reported_user__username', 'reporting_user__username')
+    summernote_fields = ('reason',)
 
-# Customizing Feedback Admin
-class FeedbackAdmin(admin.ModelAdmin):
+
+@admin.register(Feedback)
+class FeedbackAdmin(SummernoteModelAdmin):
     list_display = ('user', 'email', 'timestamp', 'read')
     list_filter = ('read',)
     search_fields = ('user__username', 'email')
+    summernote_fields = ('message',)
+
 
 # Registering models with their custom admin classes
-admin.site.register(UserProfile, UserProfileAdmin)
+#admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Interest, InterestAdmin)
 admin.site.register(Match, MatchAdmin)
-admin.site.register(Swipe, SwipeAdmin)
-admin.site.register(Message, MessageAdmin)
-admin.site.register(Report, ReportAdmin)
-admin.site.register(Feedback, FeedbackAdmin)
+#admin.site.register(Swipe, SwipeAdmin)
+#admin.site.register(Message, MessageAdmin)
+#admin.site.register(Report, ReportAdmin)
+#admin.site.register(Feedback, FeedbackAdmin)
