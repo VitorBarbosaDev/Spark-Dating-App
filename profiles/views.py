@@ -8,7 +8,8 @@ from .models import UserProfile
 class UserProfileListView(generic.ListView):
     template_name = 'profiles/index.html'
     paginate_by = 1
+
     def get_queryset(self):
-        return UserProfile.objects.filter(is_superuser=False, is_active=True)
+        return UserProfile.objects.filter(is_superuser=False, is_active=True).prefetch_related('images')
 
 

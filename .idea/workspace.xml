@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="setup inde">
-      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/userphotos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dating_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dating_app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/templates/profiles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/templates/profiles/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +69,9 @@
       <workItem from="1704932728782" duration="2215000" />
       <workItem from="1705008385842" duration="17083000" />
       <workItem from="1705027314727" duration="2305000" />
-      <workItem from="1705029697330" duration="29000" />
+      <workItem from="1705029697330" duration="75000" />
+      <workItem from="1705059317161" duration="1664000" />
+      <workItem from="1705061242022" duration="1365000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />

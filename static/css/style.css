@@ -90,6 +90,7 @@ footer {
 
 .image-container {
     position: relative;
+    overflow: hidden;
 }
 
 .image-flash {
@@ -195,4 +196,67 @@ footer {
     align-items: center;
     flex-direction: column;
     height: 100vh;
+}
+    /* Profile Cards */
+    .card {
+        background-color: var(--primary-color); /* Adjust the background color */
+        color: var(--text-color); /* Adjust the text color */
+        /* ... other styles ... */
+    }
+
+    .btn-success {
+        background-color: var(--secondary-color); /* Adjust for 'Yes' button */
+        border-color: var(--secondary-color);
+    }
+
+    .btn-success:hover {
+        background-color: darken(var(--secondary-color), 10%); /* Darken on hover */
+        border-color: darken(var(--secondary-color), 10%);
+    }
+
+    .btn-danger {
+        background-color: var(--background-color); /* Adjust for 'No' button */
+        border-color: var(--background-color);
+    }
+
+    .btn-danger:hover {
+        background-color: darken(var(--background-color), 10%); /* Darken on hover */
+        border-color: darken(var(--background-color), 10%);
+    }
+
+.profile-image {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height, adjust as needed */
+    object-fit: cover; /* Cover the area without losing aspect ratio */
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.prev-button, .next-button {
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Align center */
+    z-index: 2; /* Ensure they are above the image */
+}
+
+.prev-button {
+    left: 10px; /* Distance from the left */
+}
+
+.next-button {
+    right: 10px; /* Distance from the right */
+}
+
+.image-container img {
+    width: 100%; /* Full width of the container */
+    height: 400px; /* Adjusted height */
+    object-fit: cover; /* Cover the area without losing aspect ratio */
+    display: none; /* Hide images initially */
+}
+
+/* Show the first image by default */
+.image-container img:first-child {
+    display: block;
 }
