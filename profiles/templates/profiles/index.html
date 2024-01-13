@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load interest_icons %}
+{% load interest_icons gender_icons %}
 {% block content %}
 
 
@@ -34,8 +34,7 @@
 
             <div class="card-body">
                 <h2 class="card-title">{{ user_profile.username }}</h2>
-                <p class="card-text text-muted h6">{{user_profile.first_name}}, {{user_profile.age }} years old</p>
-                <p class="card-text">{{ user_profile.gender }}</p>
+                <p class="card-text text-muted h6">{{user_profile.first_name}}, {{user_profile.age }} years old,  <i class="{{ user_profile.gender|gender_icon }}"></i> {{ user_profile.gender }}</p>
                 <p class="card-text">
                     Interests:
                     {% for interest in user_profile.interests.all %}
