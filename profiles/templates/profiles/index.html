@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load interest_icons %}
 {% block content %}
 
 <!-- User Profiles Page Content Starts Here -->
@@ -40,7 +40,13 @@
                 <h2 class="card-title">{{ user_profile.username }}</h2>
                 <p class="card-text text-muted h6">{{user_profile.first_name}}, {{user_profile.age }} years old</p>
                 <p class="card-text">{{ user_profile.gender }}</p>
-                <p class="card-text">Interests: {% for interest in user_profile.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                <p class="card-text">
+                    Interests:
+                    {% for interest in user_profile.interests.all %}
+                    <i class="{{ interest|icon_mapper }}"></i> {{ interest.name }}
+                    {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
                 <p class="card-text">{{ user_profile.bio|truncatewords:20 }}</p>
                 <div class="text-center">
                     <button type="button" class="btn btn-success btn-sm">Yes</button>
