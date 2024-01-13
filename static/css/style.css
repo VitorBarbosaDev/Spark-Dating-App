@@ -15,11 +15,11 @@ body {
 
 /* Navbar Customization */
 .navbar {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .nav-link {
-    color: #ffffff !important;
+    color: var(--secondary-color) !important;
 }
 
 
@@ -28,7 +28,7 @@ a {
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 /* Profile Cards */
