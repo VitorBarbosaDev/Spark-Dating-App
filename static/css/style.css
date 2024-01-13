@@ -38,7 +38,9 @@ a:hover {
 }
 
 .card-title {
-    color: var(--primary-color);
+    font-size: 1.5rem; /* Larger font size for the username */
+    font-weight: 700; /* Bold font weight */
+    color: var(--secondary-color); /* Make it stand out */
 }
 
 /* Footer */
@@ -88,10 +90,6 @@ footer {
     background-color: transparent;
 }
 
-.image-container {
-    position: relative;
-    overflow: hidden;
-}
 
 .image-flash {
     position: absolute;
@@ -197,12 +195,10 @@ footer {
     flex-direction: column;
     height: 100vh;
 }
-    /* Profile Cards */
-    .card {
-        background-color: var(--primary-color); /* Adjust the background color */
-        color: var(--text-color); /* Adjust the text color */
-        /* ... other styles ... */
-    }
+.container-fluid {
+    overflow-x: hidden;
+}
+
 
     .btn-success {
         background-color: var(--secondary-color); /* Adjust for 'Yes' button */
@@ -235,28 +231,51 @@ footer {
     overflow: hidden;
 }
 
-.prev-button, .next-button {
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Align center */
-    z-index: 2; /* Ensure they are above the image */
-}
-
-.prev-button {
-    left: 10px; /* Distance from the left */
-}
-
-.next-button {
-    right: 10px; /* Distance from the right */
-}
-
+/* Ensure visibility of images */
 .image-container img {
-    width: 100%; /* Full width of the container */
-    height: 400px; /* Adjusted height */
-    object-fit: cover; /* Cover the area without losing aspect ratio */
-    display: none; /* Hide images initially */
+    display: none; /* Hide all images initially */
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }
 
-/* Show the first image by default */
+/* Display the first image by default */
 .image-container img:first-child {
     display: block;
+}
+
+/* Text Centering in Card */
+.card-body {
+    text-align: center; /* Center text */
+    padding: 20px; /* More space inside the card */
+}
+
+.card-title, .card-text {
+    margin: 0 auto; /* Center horizontally */
+}
+
+.card-text {
+    font-size: 1.1rem; /* Slightly larger than normal */
+}
+
+.card-text.text-muted {
+    color: var(--text-color);
+    font-weight: 500; /* Medium font weight for subtle emphasis */
+}
+
+
+/* Profile Cards */
+.card {
+    background-color: var(--primary-color); /* Adjust the background color */
+    color: var(--text-color); /* Adjust the text color */
+    position: relative;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 20px;
+}
+
+.rounded-image-top {
+    border-top-left-radius: 7.5px;  /* Adjust as needed */
+    border-top-right-radius: 7.5px; /* Adjust as needed */
 }

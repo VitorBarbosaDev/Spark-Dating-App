@@ -11,26 +11,34 @@
 
 
 <!-- User Profiles Displayed as Cards -->
-<div class="row d-flex justify-content-center align-items-center">
+<div class="row d-flex justify-content-center align-items-center container-fluid">
     {% for user_profile in object_list %}
     <div class="col-md-6 col-lg-4 mb-4">
         <div class="card">
-            <div class="image-container overflow-hidden position-relative" style="height: 400px;">
-                <!-- Previous Button -->
-                <button class="btn btn-secondary btn-sm prev-button position-absolute">Prev</button>
+            <!-- Bootstrap Carousel -->
+            <div id="carousel{{ user_profile.id }}" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in user_profile.images.all %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ user_profile.username }}">
+                    </div>
+                    {% endfor %}
+                </div>
 
-                <!-- Images -->
-                {% for image in user_profile.images.all %}
-                <img src="{{ image.image.url }}" alt="{{ user_profile.username }}" class="img-fluid">
-                {% endfor %}
-
-                <!-- Next Button -->
-                <button class="btn btn-secondary btn-sm next-button position-absolute">Next</button>
+                <a class="carousel-control-prev" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
+
 
             <div class="card-body">
                 <h2 class="card-title">{{ user_profile.username }}</h2>
-                <p class="card-text text-muted h6">{{ user_profile.age }} years old</p>
+                <p class="card-text text-muted h6">{{user_profile.first_name}}, {{user_profile.age }} years old</p>
                 <p class="card-text">{{ user_profile.gender }}</p>
                 <p class="card-text">Interests: {% for interest in user_profile.interests.all %}{{ interest.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                 <p class="card-text">{{ user_profile.bio|truncatewords:20 }}</p>
@@ -53,6 +61,5 @@
 
 
 {% load static %}
-<script src="{% static 'js/userphotos.js' %}"></script>
-<!-- User Profiles Page Content Ends Here -->
+
 {% endblock %}

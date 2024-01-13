@@ -39,6 +39,7 @@ class UserProfile(AbstractUser):
 
 
     # Personal Information
+    first_name = models.CharField(max_length=50, blank=True)
     age = models.PositiveIntegerField(null=True, blank=True)
     gender = models.CharField(max_length=50, choices=GENDER_CHOICES, blank=True)
     interests = models.ManyToManyField(Interest, blank=True)
