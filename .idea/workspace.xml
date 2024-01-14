@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/templates/profiles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/templates/profiles/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/staticfiles/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +72,9 @@
       <workItem from="1705059317161" duration="1664000" />
       <workItem from="1705061242022" duration="12848000" />
       <workItem from="1705108438662" duration="53000" />
+      <workItem from="1705108536001" duration="32000" />
+      <workItem from="1705260817364" duration="26000" />
+      <workItem from="1705260854448" duration="1955000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />

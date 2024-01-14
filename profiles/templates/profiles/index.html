@@ -7,9 +7,10 @@
 
 
 <!-- User Profiles Displayed as Cards -->
-<div class="row d-flex justify-content-center align-items-center container-fluid">
-    {% for user_profile in object_list %}
-    <div class="col-md-6 col-lg-4 mb-4">
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center align-items-center">
+        {% for user_profile in object_list %}
+        <div class="col-md-6 col-lg-4 mb-4">
         <div class="card">
             <!-- Bootstrap Carousel -->
             <div id="carousel{{ user_profile.id }}" class="carousel slide" data-bs-ride="carousel">
@@ -53,7 +54,9 @@
 
         </div>
     </div>
+
     {% endfor %}
+    </div>
 </div>
 
 

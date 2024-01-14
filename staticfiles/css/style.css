@@ -279,3 +279,9 @@ footer {
     border-top-left-radius: 7.5px;  /* Adjust as needed */
     border-top-right-radius: 7.5px; /* Adjust as needed */
 }
+
+.card-row{
+
+    margin-left: auto!important;
+    box-sizing: content-box!important;
+}
