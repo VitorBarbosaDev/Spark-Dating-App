@@ -11,15 +11,19 @@
     <div class="row d-flex justify-content-center align-items-center">
         {% for user_profile in object_list %}
         <div class="col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'profile_detail' user_profile.username %}" class="profile-link">
         <div class="card">
             <!-- Bootstrap Carousel -->
-            <div id="carousel{{ user_profile.id }}" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
+            <div id="carousel{{ user_profile.id }}" class="carousel slide main-bg carousel-border" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-image-top">
+
                     {% for image in user_profile.images.all %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ user_profile.username }}">
+                        <div class="tap-message">Tap To See More On {{ user_profile.first_name }}</div>
                     </div>
                     {% endfor %}
+                    <div class="overlay-message">Click again to see more</div>
                 </div>
 
                 <a class="carousel-control-prev" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="prev">
@@ -43,16 +47,17 @@
                     {% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-                <p class="card-text">{{ user_profile.bio|truncatewords:20 }}</p>
+                <p class="card-text">{{ user_profile.bio|truncatewords:20|safe }}</p>
                 <div class="text-center">
-                    <button type="button" class="btn btn-success btn-sm">Yes</button>
-                    <button type="button" class="btn btn-danger btn-sm">No</button>
+                    <button type="button" class="btn btn-yes btn-sm">Yes</button>
+                    <button type="button" class="btn btn-no btn-sm">No</button>
                 </div>
             </div>
             {% empty %}
             <p>No user profiles found.</p>
 
         </div>
+        </a>
     </div>
 
     {% endfor %}
@@ -65,5 +70,5 @@
 
 
 {% load static %}
-
+<script src="{% static 'js/clickAgain.js' %}"></script>
 {% endblock %}

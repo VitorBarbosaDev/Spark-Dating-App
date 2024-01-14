@@ -12,8 +12,6 @@ def icon_mapper(interest):
     # Convert interest name to lowercase
     interest_name_lower = interest.name.lower()
 
-    # Debugging: print the interest_name being received
-    print(f"Received interest name: {interest_name_lower}")
 
     mapping = {
         'music': 'fas fa-music',
