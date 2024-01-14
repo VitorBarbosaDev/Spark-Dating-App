@@ -31,17 +31,8 @@ a:hover {
     color: var(--primary-color);
 }
 
-/* Profile Cards */
-.card {
-    border: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
 
-.card-title {
-    font-size: 1.5rem; /* Larger font size for the username */
-    font-weight: 700; /* Bold font weight */
-    color: var(--secondary-color); /* Make it stand out */
-}
+
 
 /* Footer */
 footer {
@@ -85,10 +76,6 @@ footer {
     background-color: var(--background-color);
 }
 
-.card {
-    border: none;
-    background-color: transparent;
-}
 
 
 .image-flash {
@@ -280,8 +267,3 @@ footer {
     border-top-right-radius: 7.5px; /* Adjust as needed */
 }
 
-.card-row{
-
-    margin-left: auto!important;
-    box-sizing: content-box!important;
-}
