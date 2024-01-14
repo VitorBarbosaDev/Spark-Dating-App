@@ -2,8 +2,10 @@
 :root {
     --primary-color: #f4f4f4;
     --secondary-color: #ff6699; /* Lighter pink */
+    --secondary-color-dark: #e85a89; /* Slightly darker pink */
     --text-color: #333;
     --background-color: #ff5e5e;/* Romantic pink */
+    --background-color-dark: #e65555; /* Slightly darker pink */
 }
 
 /* Body */
@@ -187,25 +189,28 @@ footer {
 }
 
 
-    .btn-success {
-        background-color: var(--secondary-color); /* Adjust for 'Yes' button */
-        border-color: var(--secondary-color);
-    }
+.btn-yes {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+    border: none !important;
+}
 
-    .btn-success:hover {
-        background-color: darken(var(--secondary-color), 10%); /* Darken on hover */
-        border-color: darken(var(--secondary-color), 10%);
-    }
+.btn-yes:hover {
+    background-color: var(--secondary-color-dark) !important;
+    color: white !important;
+}
 
-    .btn-danger {
-        background-color: var(--background-color); /* Adjust for 'No' button */
-        border-color: var(--background-color);
-    }
+.btn-no {
+    background-color: var(--background-color) !important;
+    color: white !important;
+    border: none !important;
+}
 
-    .btn-danger:hover {
-        background-color: darken(var(--background-color), 10%); /* Darken on hover */
-        border-color: darken(var(--background-color), 10%);
-    }
+.btn-no:hover {
+    background-color: var(--background-color-dark) !important;
+    color: white !important;
+}
+
 
 .profile-image {
     width: 100%; /* Full width of the card */
@@ -233,12 +238,22 @@ footer {
 
 /* Text Centering in Card */
 .card-body {
+    background-color: var(--primary-color); /* Adjust the background color */
     text-align: center; /* Center text */
     padding: 20px; /* More space inside the card */
+    border-radius: 15px;
+    overflow: auto;
 }
 
 .card-title, .card-text {
     margin: 0 auto; /* Center horizontally */
+}
+
+.card-title {
+    font-size: 2.0rem; /* Larger font size */
+    font-weight: 700; /* Bold font weight */
+    color: var(--secondary-color);
+    padding-bottom: 5px;
 }
 
 .card-text {
@@ -253,17 +268,62 @@ footer {
 
 /* Profile Cards */
 .card {
-    background-color: var(--primary-color); /* Adjust the background color */
-    color: var(--text-color); /* Adjust the text color */
+    color: var(--text-color);
     position: relative;
     text-align: center;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    margin-top: 20px;
+    margin-top: 35px;
+    border: none;
 }
 
 .rounded-image-top {
-    border-top-left-radius: 7.5px;  /* Adjust as needed */
-    border-top-right-radius: 7.5px; /* Adjust as needed */
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7.5px 7.5px 0 0; /* Round only the top corners */
+    border: none;   /
 }
 
+.carousel-border {
+    border: none;
+    padding: 0;
+}
+
+.overlay-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.card-profile-container{
+    padding-bottom: 20px;
+}
+
+.bio-content {
+    background-color: var(--primary-color); /* Adjust the background color */
+
+}
+
+.tap-message {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
