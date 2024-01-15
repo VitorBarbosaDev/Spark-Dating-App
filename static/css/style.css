@@ -330,15 +330,21 @@ footer {
 
 /* Team Member Image */
 .team-member-image {
-    width: 400px; /* Adjust size as needed */
-    height: 300px; /* Same as width for a circle */
-    border-radius: 10%; /* Creates the circle */
-    overflow: hidden; /* Hides any overflow */
-    margin: 10px auto; /* Center the image horizontally */
+    border-radius: 10%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 2px solid var(--secondary-color);
 }
 
 .team-member-image img {
     width: 100%;
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover; /* Ensures image covers the area */
+    height: auto;
+    object-fit: cover;
+}
+
+.center-img {
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+
 }

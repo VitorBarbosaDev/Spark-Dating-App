@@ -29,8 +29,10 @@
                             <p class="card-text text-muted h6">{{ member.role }}</p>
                             <!-- Circular Image Container -->
                             {% if member.image %}
+                            <div class="col-4 col-md-3 col-lg-2 center-img">
                             <div class="team-member-image">
                                 <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                            </div>
                             </div>
                             {% endif %}
                             <div class="bio-content">
