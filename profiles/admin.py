@@ -84,10 +84,6 @@ class FeedbackAdmin(SummernoteModelAdmin):
 
 
 # Registering models with their custom admin classes
-#admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Interest, InterestAdmin)
 admin.site.register(Match, MatchAdmin)
-#admin.site.register(Swipe, SwipeAdmin)
-#admin.site.register(Message, MessageAdmin)
-#admin.site.register(Report, ReportAdmin)
-#admin.site.register(Feedback, FeedbackAdmin)
+

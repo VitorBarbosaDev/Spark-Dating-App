@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- About Section -->
+<div class="container card-profile-container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card main-bg">
+                <!-- About Content -->
+                <div class="card-body">
+                    <h2 class="card-title">{{ about.title }}</h2>
+                    <div class="bio-content">
+                        <p class="card-text">{{ about.content|safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="row mt-4 d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Our Team</h2>
+            {% for member in about.team_members.all %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ member.name }}</h3>
+                            <p class="card-text text-muted h6">{{ member.role }}</p>
+                            <!-- Circular Image Container -->
+                            {% if member.image %}
+                            <div class="team-member-image">
+                                <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                            </div>
+                            {% endif %}
+                            <div class="bio-content">
+                                <p class="card-text">{{ member.bio|safe }}</p>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
