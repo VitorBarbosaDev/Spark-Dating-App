@@ -349,3 +349,34 @@ footer {
     width: 50%;
 
 }
+
+
+/* Login and Logout Links */
+.login a, .logout a {
+    color: var(--secondary-color); /* Pink */
+}
+
+.login a:hover, .logout a:hover {
+    color: var(--secondary-color-dark); /* Darken on hover */
+    text-decoration: underline;
+}
+
+/* Adjusted styles for Sign Up link */
+.text-signup a {
+    color: var(--secondary-color);
+    font-weight: bold; /* Make it bold for emphasis */
+}
+
+.text-signup a:hover {
+    color: var(--secondary-color-dark); /* Darken on hover */
+    text-decoration: underline;
+}
+
+.btn-login-logout {
+    background-color: var(--secondary-color);
+    border: none;
+}
+
+.btn-login-logout:hover {
+    background-color: var(--secondary-color-dark);
+}
