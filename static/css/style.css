@@ -312,6 +312,7 @@ footer {
 }
 
 .bio-content {
+    margin-top: 20px;
     background-color: var(--primary-color); /* Adjust the background color */
 
 }
