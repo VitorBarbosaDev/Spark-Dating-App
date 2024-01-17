@@ -1,21 +1,76 @@
-{% extends "account/base.html" %}
-
-{% load i18n %}
-
-{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+<!-- Sign Up Form -->
+<div class="container card-profile-container my-4">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="card">
+        <!-- Form Heading -->
+        <div class="card-header main-bg">
+          <h2 class="text-white text-center">Sign Up</h2>
+        </div>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+        <!-- Sign Up Form -->
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data" class="form-signup">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+            {{ form.username|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+            {{ form.email|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+            {{ form.password1|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+            {{ form.password2|as_crispy_field }}
+            </div>
+            <!-- Custom Style for Form Fields -->
+            <div class="form-group mb-3">
+              {{ form.first_name|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.age|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.gender|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.interested_in|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.bio|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.image1|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.image2|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.image3|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.image4|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.image5|as_crispy_field }}
+            </div>
+            <div class="form-group mb-3">
+              {{ form.interests|as_crispy_field }}
+            </div>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
-{% endblock content %}
+            <!-- Submit Button -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-login-logout">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

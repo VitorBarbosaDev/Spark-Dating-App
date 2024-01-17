@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 import os
+import sys
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -41,9 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'allauth.socialaccount',
     'django_summernote',
     'profiles',
@@ -53,6 +58,10 @@ INSTALLED_APPS = [
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,6 +102,9 @@ WSGI_APPLICATION = 'dating_app.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
@@ -132,11 +144,11 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
 
 
-
-
-
+ACCOUNT_FORMS = {'signup': 'profiles.signup_forms.CustomSignupForm'}
 
 AUTH_USER_MODEL = 'profiles.UserProfile'
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -149,6 +161,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

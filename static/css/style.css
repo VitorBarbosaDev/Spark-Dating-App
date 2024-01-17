@@ -350,6 +350,13 @@ footer {
 
 }
 
+.pink-link {
+    color: var(--secondary-color);
+}
+
+.pink-link:hover {
+    color: var(--secondary-color-dark);
+}
 
 /* Login and Logout Links */
 .login a, .logout a {

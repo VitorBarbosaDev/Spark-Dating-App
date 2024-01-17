@@ -312,6 +312,7 @@ footer {
 }
 
 .bio-content {
+    margin-top: 20px;
     background-color: var(--primary-color); /* Adjust the background color */
 
 }
@@ -347,4 +348,42 @@ footer {
     margin: 20px auto;
     width: 50%;
 
+}
+
+.pink-link {
+    color: var(--secondary-color);
+}
+
+.pink-link:hover {
+    color: var(--secondary-color-dark);
+}
+
+/* Login and Logout Links */
+.login a, .logout a {
+    color: var(--secondary-color); /* Pink */
+}
+
+.login a:hover, .logout a:hover {
+    color: var(--secondary-color-dark); /* Darken on hover */
+    text-decoration: underline;
+}
+
+/* Adjusted styles for Sign Up link */
+.text-signup a {
+    color: var(--secondary-color);
+    font-weight: bold; /* Make it bold for emphasis */
+}
+
+.text-signup a:hover {
+    color: var(--secondary-color-dark); /* Darken on hover */
+    text-decoration: underline;
+}
+
+.btn-login-logout {
+    background-color: var(--secondary-color);
+    border: none;
+}
+
+.btn-login-logout:hover {
+    background-color: var(--secondary-color-dark);
 }
