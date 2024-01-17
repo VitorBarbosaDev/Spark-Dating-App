@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load interest_icons gender_icons %}
+{% load static %}
+{% block content %}
+<!-- Profile Details -->
+<div class="container card-profile-container my-4">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card">
+                <!-- Bootstrap Carousel for Images -->
+                <div id="carouselProfile" class="carousel slide main-bg carousel-border" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded-image-top">
+                        {% for image in user.images.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ user.username }}">
+                        </div>
+                        {% empty %}
+                        <div class="carousel-item active">
+                            <img src="{% static 'default_profile_pic.jpg' %}" class="d-block w-100 rounded-image-top" alt="Default Profile Picture">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselProfile" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselProfile" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!-- Profile Information -->
+                <div class="card-body">
+                    <h2 class="card-title">{{ user.username }}</h2>
+                    <p class="card-text text-muted h6">{{ user.first_name }} | {{ user.age|default:"N/A" }} years old | <i class="{{ user.gender|gender_icon }}"></i> {{ user.gender }}</p>
+                    <p class="card-text">Email: {{ user.email }}</p>
+                    {% if user.show_location and user.location %}
+                    <p class="card-text">Location: {{ user.location }}</p>
+                    {% endif %}
+                    <p class="card-text">Interests:
+                        {% for interest in user.interests.all %}
+                        <span><i class="{{ interest|icon_mapper }}"></i> {{ interest.name }}</span>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <div class="bio-content">
+                        <p class="card-text">{{ user.bio|safe }}</p>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="" class="btn btn-login-logout">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

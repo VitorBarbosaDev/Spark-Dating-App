@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from profiles.views import signup_view
+from profiles.views import signup_view , my_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,6 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include("profiles.urls") , name='profiles.urls'),
     path('custom-signup/', signup_view, name='custom_signup'),
+    path('my-profile/', my_profile, name='my_profile'),
     path('about/', include('about.urls')),
 ]

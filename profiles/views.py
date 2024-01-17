@@ -5,7 +5,14 @@ from .models import UserProfile
 from .forms import CustomUserCreationForm
 from .signup_forms import CustomSignupForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+
+
+@login_required
+def my_profile(request):
+    context = {'user': request.user}
+    return render(request, 'profiles/my_profile.html', context)
 
 class UserProfileListView(generic.ListView):
     template_name = 'profiles/index.html'
