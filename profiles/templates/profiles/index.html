@@ -4,68 +4,118 @@
 
 
 
+{% if not user.is_authenticated %}
+<!-- Promotional Content for Non-Authenticated Users -->
+<div class="container mt-4 unregister-user-prom">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Welcome to Spark Dating App!</h2>
+                    <p class="text-center">Discover people who match your interests and preferences. Join us to connect with someone special!</p>
+                    <p class="lead text-center mb-4">Explore, match, and start your dating journey with us.</p>
+
+                    <!-- Example Profile Showcase -->
+                    {% if example_user %}
+                    <p class="text-center">Plenty of people just looking for that Spark</p>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 mb-4">
+                                <div class="card ">
+                                    <!-- Bootstrap Carousel -->
+                                    <div id="carouselExample" class="carousel slide  carousel-border" data-bs-ride="carousel">
+                                        <div class="carousel-inner rounded-image-top">
+                                            {% for image in example_user.images.all %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ example_user.username }}">
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ example_user.username }}</h3>
+                                        <p class="card-text">{{ example_user.first_name }}, {{ example_user.age }} years old, <i class="{{ example_user.gender|gender_icon }}"></i> {{ example_user.gender }}</p>
+                                        <p class="card-text">{{ example_user.bio|truncatewords:40|safe }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-center">Example profile not found.</p>
+                    {% endif %}
+
+                    <!-- Call to Action Button -->
+                    <div class="text-center mt-4">
+                        <a href="{% url 'account_signup' %}" class="btn btn-login-logout btn-lg">Sign Up to Try!</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
 
 
 <!-- User Profiles Displayed as Cards -->
 <div class="container-fluid">
     <div class="row d-flex justify-content-center align-items-center">
-        {% for user_profile in object_list %}
+        {% for user_profile in user_profiles %}
         <div class="col-md-6 col-lg-4 mb-4">
-            <a href="{% url 'profile_detail' user_profile.username %}" class="profile-link">
-        <div class="card">
-            <!-- Bootstrap Carousel -->
-            <div id="carousel{{ user_profile.id }}" class="carousel slide main-bg carousel-border" data-bs-ride="carousel">
-                <div class="carousel-inner rounded-image-top">
-
-                    {% for image in user_profile.images.all %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ user_profile.username }}">
-                        <div class="tap-message">Tap To See More On {{ user_profile.first_name }}</div>
+            <div class="card">
+                <!-- Bootstrap Carousel -->
+                <div id="carousel{{ user_profile.id }}" class="carousel slide main-bg carousel-border" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded-image-top">
+                        {% for image in user_profile.images.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ user_profile.username }}">
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                    <div class="overlay-message">Click again to see more</div>
+                    <a class="carousel-control-prev" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
 
-                <a class="carousel-control-prev" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel{{ user_profile.id }}" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-
-
-            <div class="card-body">
-                <h2 class="card-title">{{ user_profile.username }}</h2>
-                <p class="card-text text-muted h6">{{user_profile.first_name}}, {{user_profile.age }} years old,  <i class="{{ user_profile.gender|gender_icon }}"></i> {{ user_profile.gender }}</p>
-                <p class="card-text">
-                    Interests:
-                    {% for interest in user_profile.interests.all %}
-                    <i class="{{ interest|icon_mapper }}"></i> {{ interest.name }}
-                    {% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </p>
-                <p class="card-text">{{ user_profile.bio|truncatewords:20|safe }}</p>
-                <div class="text-center">
-                    <button type="button" class="btn btn-yes btn-sm">Yes</button>
-                    <button type="button" class="btn btn-no btn-sm">No</button>
+                <div class="card-body">
+                    <h2 class="card-title">{{ user_profile.username }}</h2>
+                    <p class="card-text text-muted h6">{{ user_profile.first_name }}, {{ user_profile.age }} years old, <i class="{{ user_profile.gender|gender_icon }}"></i> {{ user_profile.gender }}</p>
+                    <p class="card-text">
+                        Interests:
+                        {% for interest in user_profile.interests.all %}
+                        <i class="{{ interest|icon_mapper }}"></i> {{ interest.name }}
+                        {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p class="card-text">{{ user_profile.bio|truncatewords:20|safe }}</p>
+                    <div class="text-center">
+                        {% if user_profiles.has_next %}
+                        <a href="?page={{ user_profiles.next_page_number }}" class="btn btn-yes btn-sm">Yes</a>
+                        <a href="?page={{ user_profiles.next_page_number }}" class="btn btn-no btn-sm">No</a>
+                        {% else %}
+                        <a href="?page=1" class="btn btn-yes btn-sm">Yes</a> <!-- Loop back to the first profile -->
+                        <a href="?page=1" class="btn btn-no btn-sm">No</a> <!-- Loop back to the first profile -->
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-            {% empty %}
-            <p>No user profiles found.</p>
-
         </div>
-        </a>
-    </div>
-
-    {% endfor %}
+        {% empty %}
+        <p>No user profiles found.</p>
+        {% endfor %}
     </div>
 </div>
 
 
 
+{% endif %}
 
 
 

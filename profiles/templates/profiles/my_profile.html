@@ -34,7 +34,6 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ user.username }}</h2>
                     <p class="card-text text-muted h6">{{ user.first_name }} | {{ user.age|default:"N/A" }} years old | <i class="{{ user.gender|gender_icon }}"></i> {{ user.gender }}</p>
-                    <p class="card-text">Email: {{ user.email }}</p>
                     {% if user.show_location and user.location %}
                     <p class="card-text">Location: {{ user.location }}</p>
                     {% endif %}

@@ -44,6 +44,14 @@ footer {
     text-align: center;
 }
 
+.unregister-user-prom{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+
+    margin-bottom: 50px;
+}
+
 /* Buttons */
 .btn-primary {
     background-color: var(--primary-color);
