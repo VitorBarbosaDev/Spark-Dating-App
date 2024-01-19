@@ -288,7 +288,7 @@ footer {
 .rounded-image-top {
     display: block;
     width: 100%;
-    height: auto;
+    height: 600px;
     border-radius: 7.5px 7.5px 0 0; /* Round only the top corners */
     border: none;   /
 }

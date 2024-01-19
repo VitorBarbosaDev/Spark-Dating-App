@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load interest_icons gender_icons %}
 {% block content %}
-
+{% load static %}
 
 
 {% if not user.is_authenticated %}
@@ -11,13 +11,16 @@
         <div class="col-lg-8">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h2 class="text-center mb-4">Welcome to Spark Dating App!</h2>
-                    <p class="text-center">Discover people who match your interests and preferences. Join us to connect with someone special!</p>
-                    <p class="lead text-center mb-4">Explore, match, and start your dating journey with us.</p>
+
+                    <h2 class="text-center mb-4">Welcome to Spark Dating App - Where Every Spark Ignites a New Connection!</h2>
+                    <img src="{% static 'images/SparkDatingLogo.png' %}" alt="Spark Dating Logo" class="img-fluid mb-4" style="max-width: 300px;"> <!-- Adjust the max-width as needed -->
+                    <p class="text-center">Join a community where genuine connections flourish into beautiful relationships. At Spark Dating App, your journey to find love is filled with sincerity and joy.</p>
+                    <p class="lead text-center mb-4">Embark on your love story with advanced features ensuring safety, privacy, and a heartfelt community experience.</p>
+
 
                     <!-- Example Profile Showcase -->
                     {% if example_user %}
-                    <p class="text-center">Plenty of people just looking for that Spark</p>
+                    <p class="text-center">Meet members like {{ example_user.first_name }} who are waiting to ignite their spark with someone special.</p>
                     <div class="container-fluid">
                         <div class="row justify-content-center">
                             <div class="col-md-8 mb-4">
@@ -119,6 +122,6 @@
 
 
 
-{% load static %}
+
 <script src="{% static 'js/clickAgain.js' %}"></script>
 {% endblock %}
