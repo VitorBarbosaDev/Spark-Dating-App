@@ -45,10 +45,11 @@ def home_view(request):
         interested_genders = gender_preference.get(current_user.interested_in, [])
         query = query.filter(gender__in=interested_genders)
 
-        # Further filter to include users who are interested in the current user's gender
+        # Further filter to include only users who are interested in the current user's gender
         if current_user.gender in gender_preference:
             interested_in_genders = gender_preference[current_user.gender]
-            query = query.filter(interested_in__in=interested_in_genders + ['Both'])
+            mutual_interest_filter = Q(interested_in__in=interested_in_genders) | Q(interested_in='Both')
+            query = query.filter(mutual_interest_filter)
 
         # Calculate matching score based on shared interests
         shared_interests_count = Count('interests', filter=Q(interests__in=current_user.interests.all()))
@@ -69,6 +70,7 @@ def home_view(request):
         context = {'example_user': example_user}
 
     return render(request, 'profiles/index.html', context)
+
 
 
 
