@@ -8,11 +8,12 @@
         <div class="col-md-8">
             <div class="card">
                 <!-- Bootstrap Carousel for Images -->
+                <div class="image-container">
                 <div id="carouselProfile" class="carousel slide main-bg carousel-border" data-bs-ride="carousel">
                     <div class="carousel-inner rounded-image-top">
                         {% for image in profile.images.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top" alt="{{ profile.username }}">
+                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-image-top profile-image" alt="{{ profile.username }}">
                         </div>
                         {% endfor %}
                     </div>
@@ -24,6 +25,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                </div>
                 </div>
 
                 <!-- Profile Information -->

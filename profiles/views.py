@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.http import HttpResponse
 from django.views import generic
-from .models import UserProfile
+from .models import Swipe,UserProfile
 from .forms import CustomUserCreationForm
 from .signup_forms import CustomSignupForm
+from django.db.models import Count, Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -15,31 +16,51 @@ def my_profile(request):
     context = {'user': request.user}
     return render(request, 'profiles/my_profile.html', context)
 
-class UserProfileListView(generic.ListView):
-    template_name = 'profiles/index.html'
-    paginate_by = 1
-
-
-    def get_queryset(self):
-        return UserProfile.objects.filter(is_superuser=False, is_active=True).prefetch_related('images')
 
 def post_detail(request, username):
     profile = get_object_or_404(UserProfile, username=username)
     return render(request, 'profiles/profile_detail.html', {'profile': profile})
 
+@login_required
 def home_view(request):
     if request.user.is_authenticated:
-        user_profiles_list = UserProfile.objects.filter(is_superuser=False, is_active=True).prefetch_related('images')
-        paginator = Paginator(user_profiles_list, 1)  # Show 1 profile per page
+        current_user = request.user
 
+        # Basic query excluding the current user and users not wanting to be discovered
+        query = UserProfile.objects.filter(
+            is_superuser=False,
+            is_active=True,
+            show_me_in_discovery=True
+        ).exclude(username=current_user.username)
+
+        # Mapping for gender preferences
+        gender_preference = {
+            'Men': ['Male'],
+            'Women': ['Female'],
+            'Both': ['Male', 'Female'],
+            'None': []
+        }
+
+        # Filter based on the current user's interested_in preference
+        interested_genders = gender_preference.get(current_user.interested_in, [])
+        query = query.filter(gender__in=interested_genders)
+
+        # Further filter to include users who are interested in the current user's gender
+        if current_user.gender in gender_preference:
+            interested_in_genders = gender_preference[current_user.gender]
+            query = query.filter(interested_in__in=interested_in_genders + ['Both'])
+
+        # Calculate matching score based on shared interests
+        shared_interests_count = Count('interests', filter=Q(interests__in=current_user.interests.all()))
+        query = query.annotate(shared_interests_count=shared_interests_count).order_by('-shared_interests_count')
+
+        paginator = Paginator(query.prefetch_related('images'), 1)
         page = request.GET.get('page', 1)
         try:
             user_profiles = paginator.page(page)
         except PageNotAnInteger:
-            # If page is not an integer, deliver first page
             user_profiles = paginator.page(1)
         except EmptyPage:
-            # If page is out of range, redirect to the first page
             return redirect('home')
 
         context = {'user_profiles': user_profiles}
@@ -48,6 +69,9 @@ def home_view(request):
         context = {'example_user': example_user}
 
     return render(request, 'profiles/index.html', context)
+
+
+
 
 
 
@@ -76,3 +100,16 @@ def signup_view(request):
     else:
         form = CustomSignupForm()
     return render(request, 'account/signup.html', {'form': form})
+
+
+@login_required
+def like_user(request, swiped_on_username):
+    swiped_on = get_object_or_404(UserProfile, username=swiped_on_username)
+    Swipe.objects.get_or_create(swiper=request.user, swiped_on=swiped_on, liked=True)
+    return redirect('next_profile')  # Redirect to the next profile
+
+@login_required
+def dislike_user(request, swiped_on_username):
+    swiped_on = get_object_or_404(UserProfile, username=swiped_on_username)
+    Swipe.objects.get_or_create(swiper=request.user, swiped_on=swiped_on, liked=False)
+    return redirect('next_profile')  # Redirect to the next profile

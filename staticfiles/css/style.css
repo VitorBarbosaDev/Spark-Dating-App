@@ -221,22 +221,26 @@ footer {
 
 
 .profile-image {
-    width: 100%; /* Full width of the card */
-    height: 200px; /* Fixed height, adjust as needed */
-    object-fit: cover; /* Cover the area without losing aspect ratio */
+    width: 100%; /* Full width */
+    height: auto; /* Auto height to maintain aspect ratio */
+    object-fit: cover; /* Cover the area */
 }
 
 .image-container {
-    position: relative;
-    overflow: hidden;
+    width: 100%; /* Full width */
+    height: auto; /* Auto height to maintain aspect ratio */
+    position: relative; /* Positioned relative to its normal position */
+    overflow: hidden; /* Hide the overflow */
 }
 
 /* Ensure visibility of images */
 .image-container img {
-    display: none; /* Hide all images initially */
+    position: absolute; /* Take out of document flow */
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* Cover the area without losing aspect ratio */
 }
 
 /* Display the first image by default */
@@ -288,7 +292,7 @@ footer {
 .rounded-image-top {
     display: block;
     width: 100%;
-    height: 600px;
+    height: auto;
     border-radius: 7.5px 7.5px 0 0; /* Round only the top corners */
     border: none;   /
 }
@@ -312,7 +316,16 @@ footer {
 }
 
 .carousel-item {
+    height: 800px; /* Fixed height, adjust as needed */
     position: relative;
+}
+
+/* Adjust the images within the carousel */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Center the image within the container */
 }
 
 .card-profile-container{
