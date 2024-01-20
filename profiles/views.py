@@ -28,28 +28,43 @@ def home_view(request):
 
         # Basic query excluding the current user and users not wanting to be discovered
         query = UserProfile.objects.filter(
-            is_superuser=False,
-            is_active=True,
-            show_me_in_discovery=True
+            is_superuser=False, is_active=True, show_me_in_discovery=True
         ).exclude(username=current_user.username)
 
         # Mapping for gender preferences
-        gender_preference = {
-            'Men': ['Male'],
-            'Women': ['Female'],
-            'Both': ['Male', 'Female'],
-            'None': []
-        }
-
-        # Filter based on the current user's interested_in preference
+        gender_preference = {'Men': ['Male'], 'Women': ['Female'], 'Both': ['Male', 'Female'], 'None': []}
         interested_genders = gender_preference.get(current_user.interested_in, [])
         query = query.filter(gender__in=interested_genders)
 
+        # Debugging: Print the count and usernames after applying gender filter
+        print("After gender filter:", query.count())
+        print("Usernames:", list(query.values_list('username', flat=True)))
+
         # Further filter to include only users who are interested in the current user's gender
-        if current_user.gender in gender_preference:
-            interested_in_genders = gender_preference[current_user.gender]
-            mutual_interest_filter = Q(interested_in__in=interested_in_genders) | Q(interested_in='Both')
-            query = query.filter(mutual_interest_filter)
+        if current_user.gender in ['Male', 'Female']:
+            gender_to_interested_in = {'Male': 'Women', 'Female': 'Men'}
+            user_interested_in = gender_to_interested_in.get(current_user.gender, 'Both')
+            mutual_interest_filter = Q(interested_in=user_interested_in)
+
+            query = query.exclude(mutual_interest_filter)
+
+            # Debugging: Print the count and usernames after applying mutual interest filter
+            print("After mutual interest filter:", query.count())
+            print("Usernames:", list(query.values_list('username', flat=True)))
+
+
+        print("After mutual If interest filter:", query.count())
+        print("Usernames:", list(query.values_list('username', flat=True)))
+
+        # Filter out users who have blocked the current user
+        query = query.exclude(blocked_users=current_user)
+
+        #filter out users who have been blocked by the current user
+        query = query.exclude(id__in=current_user.blocked_users.all())
+
+        # Filter out users who have already been swiped on by the current user
+        swiped_user_ids = Swipe.objects.filter(swiper=current_user).values_list('swiped_on_id', flat=True)
+        query = query.exclude(id__in=swiped_user_ids)
 
         # Calculate matching score based on shared interests
         shared_interests_count = Count('interests', filter=Q(interests__in=current_user.interests.all()))
@@ -70,6 +85,7 @@ def home_view(request):
         context = {'example_user': example_user}
 
     return render(request, 'profiles/index.html', context)
+
 
 
 
