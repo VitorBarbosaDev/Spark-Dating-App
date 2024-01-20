@@ -21,7 +21,7 @@ def post_detail(request, username):
     profile = get_object_or_404(UserProfile, username=username)
     return render(request, 'profiles/profile_detail.html', {'profile': profile})
 
-@login_required
+
 def home_view(request):
     if request.user.is_authenticated:
         current_user = request.user
