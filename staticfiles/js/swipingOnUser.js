@@ -20,7 +20,10 @@ document.querySelectorAll('.btn-yes, .btn-no').forEach(button => {
             .then(response => response.json())
             .then(data => {
                 if (data.match) {
-                    alert(data.message);
+                    // Set match message
+                    var matchModal = new bootstrap.Modal(document.getElementById('matchModal'));
+
+                    matchModal.show();
                 }
 
                 if (data.next_profile) {
@@ -224,9 +227,54 @@ function displayNoProfilesMessage() {
     }
 }
 
-function removeLastProfileCard() {
-    let lastProfileCard = document.querySelector('.profile-container-outer .row.d-flex.justify-content-center.align-items-center .profile-card');
-    if (lastProfileCard) {
-        lastProfileCard.remove();
-    }
+function swipeActionProfilePage(event, username, like) {
+    event.preventDefault();
+
+    let method = 'POST';
+    let endpoint = like ? `/like/${username}/` : `/dislike/${username}/`;
+
+    fetch(endpoint, {
+        method: method,
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'),
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.match) {
+                // Set match message
+                document.getElementById('matchMessage').textContent = data.message;
+
+                // Show the modal
+                var matchModal = new bootstrap.Modal(document.getElementById('matchModal'));
+                matchModal.show();
+
+                // Add event listener to redirect to home page after closing the modal
+                document.getElementById('matchModal').addEventListener('hidden.bs.modal', () => {
+                    window.location.href = '/'; // Redirect to home page
+                });
+            } else {
+                // No match, redirect to home page
+                window.location.href = '/';
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
+
+// Attach event listeners to Yes and No buttons
+document.querySelectorAll('.btn-yes, .btn-no').forEach(originalButton => {
+    // Clone the button and replace the original with the clone
+    let clonedButton = originalButton.cloneNode(true);
+    originalButton.parentNode.replaceChild(clonedButton, originalButton);
+
+    // Now attach the event listener to the cloned button
+    clonedButton.addEventListener('click', event => {
+        event.preventDefault();
+        let username = clonedButton.getAttribute('data-username');
+        let like = clonedButton.classList.contains('btn-yes');
+        swipeActionProfilePage(event, username, like);
+    });
+});
+
+

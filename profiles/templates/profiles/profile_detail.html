@@ -45,8 +45,8 @@
                         <p class="card-text">{{ profile.bio|safe }}</p>
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-yes btn-sm">Yes</button>
-                        <button type="button" class="btn btn-no btn-sm">No</button>
+                        <button type="button" class="btn btn-yes btn-sm" data-username="{{ profile.username }}">Yes</button>
+                        <button type="button" class="btn btn-no btn-sm" data-username="{{ profile.username }}">No</button>
                     </div>
                 </div>
             </div>
