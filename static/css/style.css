@@ -86,7 +86,9 @@ footer {
     background-color: var(--background-color);
 }
 
-
+.no-border{
+    border: none;
+}
 
 .image-flash {
     position: absolute;

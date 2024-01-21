@@ -34,7 +34,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True if os.environ.get("DEVELOPMENT") == "True" else False
 
 
-
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
 

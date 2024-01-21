@@ -63,10 +63,10 @@
 
 
 <!-- User Profiles Displayed as Cards -->
-<div class="container-fluid">
+<div class="container-fluid profile-container-outer">
     <div class="row d-flex justify-content-center align-items-center">
         {% for user_profile in user_profiles %}
-        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="col-md-6 col-lg-4 mb-4 profile-card" >
             <a href="{% url 'profile_detail' user_profile.username %}" class="profile-link">
             <div class="card">
                 <!-- Bootstrap Carousel -->
@@ -104,19 +104,29 @@
                     </p>
                     <p class="card-text">{{ user_profile.bio|truncatewords:20|safe }}</p>
                     <div class="text-center">
-                        {% if user_profiles.has_next %}
-                        <a href="?page={{ user_profiles.next_page_number }}" class="btn btn-yes btn-sm">Yes</a>
-                        <a href="?page={{ user_profiles.next_page_number }}" class="btn btn-no btn-sm">No</a>
-                        {% else %}
-                        <a href="?page=1" class="btn btn-yes btn-sm">Yes</a> <!-- Loop back to the first profile -->
-                        <a href="?page=1" class="btn btn-no btn-sm">No</a> <!-- Loop back to the first profile -->
-                        {% endif %}
+
+                        <a href="#" class="btn btn-yes btn-sm" data-username="{{ user_profile.username }}">Yes</a>
+                        <a href="#" class="btn btn-no btn-sm" data-username="{{ user_profile.username }}">No</a>
+
+
+
                     </div>
                 </div>
             </div>
         </div>
         {% empty %}
-        <p>No user profiles found.</p>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="text-center mb-4">No More Profiles Found</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% endfor %}
     </div>
 </div>
@@ -127,6 +137,24 @@
 
 
 
+<div id="matchModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card shadow-sm">
+            <div class="modal-header no-border">
+                <h5 class="modal-title">It's a Match!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="matchMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-login-logout" data-bs-dismiss="modal">Continue Swiping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="{% static 'js/clickAgain.js' %}"></script>
+<script src="{% static 'js/swipingOnUser.js' %}"></script>
 {% endblock %}
