@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from profiles.models import UserProfile,Match
 from django.contrib.auth.decorators import login_required
 from .models import Message
+from django.http import JsonResponse
 
 @login_required
 def match_list(request):
@@ -37,12 +38,38 @@ def chat_view(request, username):
             Message.objects.create(sender=request.user, receiver=other_user, content=content)
             return redirect('messaging:chat', username=username)
 
-    messages = Message.objects.filter(
+    chat_messages = Message.objects.filter(
         Q(sender=request.user, receiver=other_user) |
         Q(sender=other_user, receiver=request.user)
     ).order_by('timestamp')
 
-    return render(request, 'messaging/chat.html', {'other_user': other_user, 'messages': messages})
+    return render(request, 'messaging/chat.html', {'other_user': other_user, 'chat_messages': chat_messages})
+
+
+@login_required
+def get_new_messages(request, username):
+    try:
+        other_user = UserProfile.objects.get(username=username)
+    except UserProfile.DoesNotExist:
+        return JsonResponse({'error': 'User not found'}, status=404)
+
+    last_message_id = request.GET.get('last_message_id')
+    if last_message_id:
+        new_messages = Message.objects.filter(
+            Q(sender=request.user, receiver=other_user) | Q(sender=other_user, receiver=request.user),
+            id__gt=last_message_id
+        ).order_by('timestamp')
+    else:
+        new_messages = Message.objects.none()
+
+    chat_messages_data = [{
+        'id': message.id,
+        'sender': message.sender.username,
+        'content': message.content,
+        'timestamp': message.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+    } for message in new_messages]
+
+    return JsonResponse({'chat_messages': chat_messages_data})
 
 
 

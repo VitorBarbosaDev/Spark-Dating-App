@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
@@ -9,9 +9,9 @@
                     <h1 class="text-center mb-4">Chat with {{ other_user.username }}</h1>
 
                     <div class="message-history mb-4">
-                        {% if messages %}
-                        {% for message in messages %}
-                        <div class="mb-2 {% if message.sender == request.user %}text-end{% else %}text-start{% endif %}">
+                        {% if chat_messages %}
+                        {% for message in chat_messages %}
+                        <div class="mb-2 {% if message.sender == request.user %}text-end{% else %}text-start{% endif %}" data-message-id="{{ message.id }}">
                             <span class="message-bubble {% if message.sender == request.user %}user-message{% else %}other-user-message{% endif %}">
                                 {{ message.content }}
                             </span>
@@ -40,5 +40,10 @@
         </div>
     </div>
 </div>
-{% endblock %}
 
+<script type="text/javascript">
+    const getNewMessagesUrl = "{% url 'messaging:get_new_messages' other_user.username %}";
+</script>
+
+<script src="{% static 'js/checkforNewMessages.js' %}"></script>
+{% endblock %}

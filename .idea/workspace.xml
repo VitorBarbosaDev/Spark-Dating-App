@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="">
+    <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="add fetch new messages">
+      <change afterPath="$PROJECT_DIR$/static/js/checkforNewMessages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messaging/templates/messaging/match_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/templates/messaging/match_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +105,7 @@
       <workItem from="1705790500699" duration="15678000" />
       <workItem from="1705806378446" duration="43000" />
       <workItem from="1705849625252" duration="13601000" />
-      <workItem from="1705866249864" duration="3386000" />
+      <workItem from="1705866249864" duration="10192000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />
@@ -378,15 +379,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705865777889</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add messaging ui">
+      <option name="closed" value="true" />
+      <created>1705869882732</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1705869882732</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add styling to navbar" />
-    <MESSAGE value="add mapping for gender" />
     <MESSAGE value="add centering to card" />
     <MESSAGE value="added profile_detail.html view" />
     <MESSAGE value="add styling for profile_detail" />
@@ -410,6 +417,8 @@
     <MESSAGE value="add swipe animation" />
     <MESSAGE value="add messaging model" />
     <MESSAGE value="add user messaging" />
-    <option name="LAST_COMMIT_MESSAGE" value="add user messaging" />
+    <MESSAGE value="add messaging ui" />
+    <MESSAGE value="add fetch new messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="add fetch new messages" />
   </component>
 </project>
