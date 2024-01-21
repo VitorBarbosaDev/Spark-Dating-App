@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messaging/templates/messaging/match_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messaging/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dating_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dating_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/templates/messaging/match_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/templates/messaging/match_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +103,8 @@
       <workItem from="1705770668837" duration="18842000" />
       <workItem from="1705790500699" duration="15678000" />
       <workItem from="1705806378446" duration="43000" />
-      <workItem from="1705849625252" duration="13272000" />
+      <workItem from="1705849625252" duration="13601000" />
+      <workItem from="1705866249864" duration="3386000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />
@@ -371,14 +370,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705861100551</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="add user messaging">
+      <option name="closed" value="true" />
+      <created>1705865777889</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1705865777889</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add icons to interest" />
     <MESSAGE value="add styling to navbar" />
     <MESSAGE value="add mapping for gender" />
     <MESSAGE value="add centering to card" />
@@ -403,6 +409,7 @@
     <MESSAGE value="add animations for swipe" />
     <MESSAGE value="add swipe animation" />
     <MESSAGE value="add messaging model" />
-    <option name="LAST_COMMIT_MESSAGE" value="add messaging model" />
+    <MESSAGE value="add user messaging" />
+    <option name="LAST_COMMIT_MESSAGE" value="add user messaging" />
   </component>
 </project>

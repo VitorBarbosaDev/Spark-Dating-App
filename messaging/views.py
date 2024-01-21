@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from profiles.models import UserProfile
+from profiles.models import UserProfile,Match
 from django.contrib.auth.decorators import login_required
 from .models import Message
 
