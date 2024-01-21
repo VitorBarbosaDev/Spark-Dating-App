@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="">
+    <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="add animations for swipe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/templates/profiles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/templates/profiles/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/swipingOnUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/swipingOnUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/js/swipingOnUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/js/swipingOnUser.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +101,9 @@
       <workItem from="1705754938487" duration="691000" />
       <workItem from="1705770587343" duration="73000" />
       <workItem from="1705770668837" duration="18842000" />
-      <workItem from="1705790500699" duration="15600000" />
+      <workItem from="1705790500699" duration="15678000" />
+      <workItem from="1705806378446" duration="43000" />
+      <workItem from="1705849625252" duration="5237000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />
@@ -341,14 +345,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705804331204</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="add animations for swipe">
+      <option name="closed" value="true" />
+      <created>1705806198213</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1705806198213</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="setup inde" />
     <MESSAGE value="add more styling to Index" />
     <MESSAGE value="add working carousel" />
     <MESSAGE value="add icons to interest" />
@@ -373,6 +384,7 @@
     <MESSAGE value="add fliter other user pref" />
     <MESSAGE value="add swiping to Index" />
     <MESSAGE value="add swiping to Profile page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add swiping to Profile page" />
+    <MESSAGE value="add animations for swipe" />
+    <option name="LAST_COMMIT_MESSAGE" value="add animations for swipe" />
   </component>
 </project>

@@ -9,6 +9,8 @@ document.querySelectorAll('.btn-yes, .btn-no').forEach(button => {
 
         // Save a reference to the current profile card
         let currentProfileCard = event.currentTarget.closest('.profile-card');
+        let card = event.currentTarget.closest('.card');
+        playAnimation(card, like);
 
         fetch(endpoint, {
             method: method,
@@ -161,8 +163,33 @@ function attachSwipeEventListeners(card, username) {
     }
 }
 
+function playAnimation(currentProfileCard, like) {
+    if (currentProfileCard )
+    {
+        if (like) {
+            let likeText = document.createElement('span');
+            likeText.textContent = 'Like';
+            likeText.className = 'like-animation';
+            currentProfileCard.appendChild(likeText);
+            currentProfileCard.classList.add('swipe-right');
+        }
+        else {
+            let dislikeText = document.createElement('span');
+            dislikeText.textContent = 'Dislike';
+            dislikeText.className = 'dislike-animation';
+            currentProfileCard.appendChild(dislikeText);
+            currentProfileCard.classList.add('swipe-left');
+        }
+    }
+
+}
+
 function swipeAction(event, username, like) {
     event.preventDefault();
+
+
+    let card = event.currentTarget.closest('.card');
+    playAnimation(card, like);
 
     let method = 'POST';
     let endpoint = like ? `/like/${username}/` : `/dislike/${username}/`;
@@ -229,6 +256,11 @@ function displayNoProfilesMessage() {
 
 function swipeActionProfilePage(event, username, like) {
     event.preventDefault();
+
+
+    let card = event.currentTarget.closest('.card');
+    playAnimation(card, like);
+
 
     let method = 'POST';
     let endpoint = like ? `/like/${username}/` : `/dislike/${username}/`;

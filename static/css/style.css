@@ -415,43 +415,86 @@ footer {
     max-width: 500px;
 }
 
-@keyframes glow {
+.like-animation {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    opacity: 0;
+    transform: scale(0);
+    animation: likeAnim 0.5s forwards;
+}
+
+@keyframes likeAnim {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(55, 255, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgb(14, 255, 82);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.dislike-animation {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #af4c4c;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    opacity: 0;
+    transform: scale(0);
+    animation: dislikeAnim 0.5s forwards;
+}
+
+@keyframes dislikeAnim {
     0%, 100% {
         box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
     }
     50% {
         box-shadow: 0 0 20px rgba(255, 0, 0, 1);
     }
-}
-
-@keyframes tiltRight {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(20deg);
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
-@keyframes tiltLeft {
-    0% {
-        transform: rotate(0deg);
+
+.profile-card {
+
+    transform-origin: bottom;
+    transition: transform 0.5s ease-in-out;
+}
+
+.swipe-right {
+    animation: swipeRight 0.5s forwards;
+}
+
+.swipe-left {
+    animation: swipeLeft 0.5s forwards;
+}
+
+
+@keyframes swipeRight {
+    to {
+        transform: translateX(-50%) rotate(-10deg);
     }
-    100% {
-        transform: rotate(-20deg);
+}
+
+@keyframes swipeLeft {
+    to {
+        transform: translateX(50%) rotate(10deg);
     }
-}
-
-.profile-card.glow {
-    animation: glow 0.5s ease-in-out;
-}
-
-.profile-card.swipe-right {
-    animation: tiltRight 0.5s ease-in-out forwards;
-}
-
-.profile-card.swipe-left {
-    animation: tiltLeft 0.5s ease-in-out forwards;
 }
 
 
@@ -462,10 +505,10 @@ footer {
     }
 }
 
-/* Style for smaller screens */
+
 @media screen and (max-width: 768px) {
     .carousel-item {
-        height: 500px; /* Adjust this value as needed for smaller screens */
+        height: 500px;
     }
 
 }
@@ -473,7 +516,7 @@ footer {
 
 @media screen and (max-width: 320px) {
     .carousel-item {
-        height: 300px; /* Adjust for even smaller screens */
+        height: 300px;
     }
 }
 
