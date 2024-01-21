@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Matches</h2>
+<ul>
+    {% for profile in matched_profiles %}
+    <li>
+        <a href="{% url 'messaging:chat' profile.username %}">
+            {{ profile.username }}
+        </a>
+    </li>
+    {% empty %}
+    <li>No matches yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

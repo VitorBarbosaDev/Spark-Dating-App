@@ -4,7 +4,7 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
-
+{% url 'messaging:messages' as messages_url %}
 
 
 <!DOCTYPE html>
@@ -60,8 +60,13 @@
                     <a class="nav-link {% if request.path == '/my-profile/' %}active{% endif %}" href="{% url 'my_profile' %}">My Profile</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/messaging/matches/' %}active{% endif %}" href="{% url 'messaging:match_list' %}">Messages</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                 </li>
+
+
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"

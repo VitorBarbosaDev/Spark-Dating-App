@@ -26,4 +26,5 @@ urlpatterns = [
     path('custom-signup/', signup_view, name='custom_signup'),
     path('my-profile/', my_profile, name='my_profile'),
     path('about/', include('about.urls')),
+    path('messaging/', include(('messaging.urls', 'messaging'), namespace='messaging')),
 ]

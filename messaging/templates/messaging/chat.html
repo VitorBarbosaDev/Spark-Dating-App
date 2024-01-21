@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Chat with {{ other_user.username }}</h2>
+
+<div class="message-history">
+    {% for message in messages %}
+    <div class="{% if message.sender == request.user.userprofile %}sent{% else %}received{% endif %}">
+        {{ message.content }}
+    </div>
+    {% endfor %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <textarea name="content"></textarea>
+    <button type="submit">Send</button>
+</form>
+
+<a href="{% url 'messaging:match_list' %}">Back to Matches</a>
+{% endblock %}
