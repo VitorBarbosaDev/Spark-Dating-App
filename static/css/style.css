@@ -415,6 +415,47 @@ footer {
     max-width: 500px;
 }
 
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+    }
+}
+
+@keyframes tiltRight {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+@keyframes tiltLeft {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+.profile-card.glow {
+    animation: glow 0.5s ease-in-out;
+}
+
+.profile-card.swipe-right {
+    animation: tiltRight 0.5s ease-in-out forwards;
+}
+
+.profile-card.swipe-left {
+    animation: tiltLeft 0.5s ease-in-out forwards;
+}
+
+
+
 @media screen and (max-width: 1000px) {
     .site-image {
         max-width: 100%;
@@ -435,3 +476,6 @@ footer {
         height: 300px; /* Adjust for even smaller screens */
     }
 }
+
+
+

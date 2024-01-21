@@ -67,8 +67,9 @@
     <div class="row d-flex justify-content-center align-items-center">
         {% for user_profile in user_profiles %}
         <div class="col-md-6 col-lg-4 mb-4 profile-card" >
-            <a href="{% url 'profile_detail' user_profile.username %}" class="profile-link">
+
             <div class="card">
+                <a href="{% url 'profile_detail' user_profile.username %}" class="profile-link">
                 <!-- Bootstrap Carousel -->
                 <div id="carousel{{ user_profile.id }}" class="carousel slide main-bg carousel-border" data-bs-ride="carousel">
                     <div class="carousel-inner rounded-image-top">
@@ -91,7 +92,7 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-
+            </a>
                 <div class="card-body">
                     <h2 class="card-title">{{ user_profile.username }}</h2>
                     <p class="card-text text-muted h6">{{ user_profile.first_name }}, {{ user_profile.age }} years old, <i class="{{ user_profile.gender|gender_icon }}"></i> {{ user_profile.gender }}</p>
@@ -104,16 +105,13 @@
                     </p>
                     <p class="card-text">{{ user_profile.bio|truncatewords:20|safe }}</p>
                     <div class="text-center">
-
                         <a href="#" class="btn btn-yes btn-sm" data-username="{{ user_profile.username }}">Yes</a>
                         <a href="#" class="btn btn-no btn-sm" data-username="{{ user_profile.username }}">No</a>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
+
         {% empty %}
         <div class="container">
             <div class="row justify-content-center">
@@ -130,6 +128,7 @@
         {% endfor %}
     </div>
 </div>
+
 
 
 
