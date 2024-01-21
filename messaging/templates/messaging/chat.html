@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container">
+<div class="container chat-container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card">
@@ -41,7 +41,10 @@
     </div>
 </div>
 
+
+
 <script type="text/javascript">
+    const currentUserUsername = "{{ request.user.username }}";
     const getNewMessagesUrl = "{% url 'messaging:get_new_messages' other_user.username %}";
 </script>
 

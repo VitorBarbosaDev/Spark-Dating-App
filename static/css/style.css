@@ -516,6 +516,10 @@ footer {
     color: white;
 }
 
+.chat-container{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 
 
 @media screen and (max-width: 1000px) {
