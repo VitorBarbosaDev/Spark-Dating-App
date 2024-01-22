@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/profiles/templates/profiles/profile_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profiles/templates/profiles/profile_edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profiles/templatetags/custom_filters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/messaging/test_models_messaging.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/messaging/test_views_messaging.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profiles/test_forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profiles/test_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profiles/test_views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/checkforNewMessages.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/templates/profiles/my_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/templates/profiles/my_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/templatetags/gender_icons.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/templatetags/gender_icons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/about/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/checkforNewMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/checkforNewMessages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,27 +51,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vmanb/OneDrive/Desktop/Games/CodeInsitute/Spark-Dating-App - modulecreated&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Jest.fetchNewMessages.fetches new messages correctly.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/vmanb/OneDrive/Desktop/Games/CodeInsitute/Spark-Dating-App - modulecreated",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "C:/Users/vmanb/OneDrive/Desktop/Games/CodeInsitute/Spark-Dating-App/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vmanb\OneDrive\Desktop\Games\CodeInsitute\Spark-Dating-App\static\js" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="fetchNewMessages.fetches new messages correctly" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/static/js/checkforNewMessages.test.js" />
+      <test-names>
+        <test-name value="fetchNewMessages" />
+        <test-name value="fetches new messages correctly" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.fetchNewMessages.fetches new messages correctly" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -112,7 +137,7 @@
       <workItem from="1705849625252" duration="13601000" />
       <workItem from="1705866249864" duration="12280000" />
       <workItem from="1705878624648" duration="16945000" />
-      <workItem from="1705895832077" duration="4364000" />
+      <workItem from="1705895832077" duration="13203000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />
@@ -418,14 +443,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705892013861</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="add edit and delete profile">
+      <option name="closed" value="true" />
+      <created>1705900403135</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1705900403135</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add styling for profile_detail" />
     <MESSAGE value="add about" />
     <MESSAGE value="add about app" />
     <MESSAGE value="add debug false" />
@@ -450,6 +482,7 @@
     <MESSAGE value="add fetch new messages" />
     <MESSAGE value="add new var" />
     <MESSAGE value="add auto new message" />
-    <option name="LAST_COMMIT_MESSAGE" value="add auto new message" />
+    <MESSAGE value="add edit and delete profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="add edit and delete profile" />
   </component>
 </project>

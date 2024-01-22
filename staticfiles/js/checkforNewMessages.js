@@ -95,3 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(fetchNewMessages, 5000); // Check for new messages every 5 seconds
 });
 
+
+module.exports = {
+    fetchNewMessages,
+    fetchWithRetry,
+    getLastMessageId,
+    updateChatWindow
+};
