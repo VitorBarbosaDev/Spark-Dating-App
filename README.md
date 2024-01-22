@@ -238,7 +238,7 @@ This Django application is configured to be hosted on Heroku, using ElephantSQL 
 
 ## Testing
 
-You can view the testing that was done in the testing.md file that I created [here(https://github.com/VitorBarbosaDev/Spark-Dating-App/blob/main/TESTING.MD)]
+You can view the testing that was done in the testing.md file that I created [here](https://github.com/VitorBarbosaDev/Spark-Dating-App/blob/main/TESTING.MD)
 
 
 ## Credits
