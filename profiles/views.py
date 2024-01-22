@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, redirect, get_object_or_404,redirect
 from django.http import HttpResponse ,JsonResponse
 from django.views import generic
-from .models import Swipe,UserProfile,Match
-from .forms import CustomUserCreationForm
+from .models import Swipe,UserProfile,Match,UserProfileImage
+from .forms import CustomUserCreationForm,ProfileForm
 from .signup_forms import CustomSignupForm
 from django.db.models import Count, Q
 from django.contrib import messages
@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .utils import gender_icon_mapper ,icon_mapper
 from django.urls import reverse
+from django.contrib.auth import logout
 
 
 @login_required
@@ -224,3 +225,44 @@ def profile_to_dict(profile):
         'profile_url': reverse('profile_detail', kwargs={'username': profile.username}),
     }
     return data
+
+
+
+@login_required
+def profile_edit(request, username):
+    user = get_object_or_404(UserProfile, username=username)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+
+            # Handling additional image uploads
+            for file in request.FILES.getlist('additional_images'):
+                # Upload to Cloudinary and create UserProfileImage instance
+                # Make sure to handle exceptions and errors
+                UserProfileImage.objects.create(user=user, image=file)
+
+            return redirect('my_profile')
+    else:
+        form = ProfileForm(instance=user)
+
+    context = {'form': form, 'user': user}
+    return render(request, 'profiles/profile_edit.html', context)
+
+
+@login_required
+def delete_image(request, image_id):
+    image = get_object_or_404(UserProfileImage, id=image_id, user=request.user)
+    image.delete()
+    return redirect('profile_edit', username=request.user.username)
+
+
+@login_required
+def profile_delete(request, username):
+    profile = get_object_or_404(UserProfile, username=username)
+    if request.user.id == profile.id:
+        profile.delete()
+        return redirect('home')
+    else:
+        return redirect('profile_detail', username=username)

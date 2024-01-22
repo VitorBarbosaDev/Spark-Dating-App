@@ -19,3 +19,9 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = UserProfile
         fields = UserChangeForm.Meta.fields
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['username', 'email', 'first_name', 'age', 'gender', 'interests', 'bio', 'interested_in', 'location', 'latitude', 'longitude']

@@ -49,11 +49,33 @@
                         <p class="card-text">{{ user.bio|safe }}</p>
                     </div>
                     <div class="text-center mt-4">
-                        <a href="" class="btn btn-login-logout">Edit Profile</a>
+                        <a href="{% url 'profile_edit' user.username %}" class="btn btn-login-logout">Edit Profile</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Profile</button>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your profile?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="{% url 'profile_delete' user.username %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
