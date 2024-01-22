@@ -51,9 +51,6 @@ Repo : [Link](https://github.com/VitorBarbosaDev/Spark-Dating-App/)
 ![image](https://github.com/VitorBarbosaDev/Spark-Dating-App/assets/46977318/b35b6a69-88dd-4a19-9a95-a80e13e21d66)
 
 
-Certainly! Here's an improved version of the section:
-
----
 
 ## Spark Dating: A New Haven for Romance
 
