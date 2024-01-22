@@ -506,6 +506,12 @@ footer {
     max-width: 60%;
 }
 
+.message-history {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+
 .user-message {
     background-color: var(--secondary-color);
     color: white;
@@ -516,6 +522,10 @@ footer {
     color: white;
 }
 
+.chat-container{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 
 
 @media screen and (max-width: 1000px) {

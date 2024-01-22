@@ -53,14 +53,17 @@ def get_new_messages(request, username):
     except UserProfile.DoesNotExist:
         return JsonResponse({'error': 'User not found'}, status=404)
 
-    last_message_id = request.GET.get('last_message_id')
-    if last_message_id:
-        new_messages = Message.objects.filter(
-            Q(sender=request.user, receiver=other_user) | Q(sender=other_user, receiver=request.user),
-            id__gt=last_message_id
-        ).order_by('timestamp')
-    else:
-        new_messages = Message.objects.none()
+    last_message_id = request.GET.get('last_message_id', 0)
+    try:
+        last_message_id = int(last_message_id)
+    except ValueError:
+        last_message_id = 0
+
+    new_messages = Message.objects.filter(
+        Q(sender=request.user, receiver=other_user) | Q(sender=other_user, receiver=request.user),
+        id__gt=last_message_id
+    ).order_by('timestamp')
+
 
     chat_messages_data = [{
         'id': message.id,
@@ -70,6 +73,9 @@ def get_new_messages(request, username):
     } for message in new_messages]
 
     return JsonResponse({'chat_messages': chat_messages_data})
+
+
+
 
 
 

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="911a107f-11d4-4bc6-90f6-80d0931e724a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/templates/messaging/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/checkforNewMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/checkforNewMessages.js" afterDir="false" />
     </list>
@@ -104,7 +104,7 @@
       <workItem from="1705806378446" duration="43000" />
       <workItem from="1705849625252" duration="13601000" />
       <workItem from="1705866249864" duration="12280000" />
-      <workItem from="1705878624648" duration="1102000" />
+      <workItem from="1705878624648" duration="13282000" />
     </task>
     <task id="LOCAL-00001" summary="add database intregation">
       <option name="closed" value="true" />
@@ -394,14 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705876573037</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="add new var">
+      <option name="closed" value="true" />
+      <created>1705879792677</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1705879792677</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add centering to card" />
     <MESSAGE value="added profile_detail.html view" />
     <MESSAGE value="add styling for profile_detail" />
     <MESSAGE value="add about" />
@@ -426,6 +433,7 @@
     <MESSAGE value="add user messaging" />
     <MESSAGE value="add messaging ui" />
     <MESSAGE value="add fetch new messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fetch new messages" />
+    <MESSAGE value="add new var" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new var" />
   </component>
 </project>
