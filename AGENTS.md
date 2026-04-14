@@ -73,5 +73,5 @@ python manage.py migrate
 - Heroku via `Procfile` (`web: gunicorn dating_app.wsgi`).
 - Static files served by WhiteNoise. Run `python manage.py collectstatic` before deploy.
 - Database: PostgreSQL via `dj-database-url` (Supabase-hosted). Cloudinary for image CDN.
-- Runtime: `python-3.9.18` (see `runtime.txt`).
+- Runtime: `python-3.12.10` (see `runtime.txt`).
 
